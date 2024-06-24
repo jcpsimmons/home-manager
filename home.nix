@@ -21,6 +21,10 @@
     source = ./dotfiles/.config/hypr;
     recursive = true;
   };
+  home.file.".config/waybar" = {
+    source = ./dotfiles/.config/waybar;
+    recursive = true;
+  };
   programs.home-manager.enable = true;
   programs.fzf.enable = true;
   services.playerctld.enable = true;

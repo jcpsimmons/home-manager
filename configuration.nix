@@ -65,9 +65,6 @@
     xwayland.enable = true;
   };
   
-  environment.etc = {
-    "test.txt".source = ./test.txt;
-  };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Enable the GNOME Desktop Environment.
 
