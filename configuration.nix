@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
+      ./packages/common.nix
     ];
 
   # Bootloader.
@@ -79,6 +80,12 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -115,44 +122,14 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Flake support
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    neovim
-    ripgrep
-    spotify-player
-    chromium
-    btop
-    killall
-    cool-retro-term
-    hyprpaper
-    hyprpicker
-    hypridle
-    hyprlock
-    hyprcursor
-    fzf
-    tmux
-    git
-    nix-prefetch-git
-    libgcc
-    gcc
-    nwg-look
-    nil
-    nixpkgs-fmt
-    unzip
-    gh
-    rofi
-    brave
-    arandr
-    foot
-    wofi
-    dolphin
-    vscode
-    zsh
-    oh-my-zsh
-  ];
 
   fonts.packages = with pkgs; [
     nerdfonts

@@ -6,6 +6,8 @@
    imports = [
      ./modules/zsh
      ./modules/git
+     ./modules/foot
+     ./modules/gtk
    ];
 
   home.username = "jsimmons";
@@ -21,4 +23,5 @@
   };
   programs.home-manager.enable = true;
   programs.fzf.enable = true;
+  services.playerctld.enable = true;
 }
