@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     tree
+    ffmpeg_7
     cool-retro-term
     gnome.nautilus
     gnome.gnome-tweaks
