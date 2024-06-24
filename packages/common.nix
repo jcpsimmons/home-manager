@@ -2,6 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    tree
+    cool-retro-term
     gnome.nautilus
     gnome.gnome-tweaks
     gnome.eog
@@ -43,5 +45,7 @@
     zsh
     oh-my-zsh
     playerctl
+    networkmanager
+    networkmanagerapplet
   ];
 }

@@ -46,7 +46,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
 
   home-manager.users.jsimmons = import ./home.nix;
   home-manager.backupFileExtension = "bak";
@@ -73,8 +73,10 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      variant = "";
+      layout = "us";
+    };
   };
 
   # Enable CUPS to print documents.
