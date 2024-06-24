@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    dunst
     tree
     ffmpeg_7
     cool-retro-term
