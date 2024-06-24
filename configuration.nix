@@ -49,7 +49,6 @@
   services.xserver.displayManager.sddm.enable = true;
 
   home-manager.users.jsimmons = import ./home.nix;
-  home-manager.backupFileExtension = "bak";
 
   programs.zsh = {
     enable = true;
