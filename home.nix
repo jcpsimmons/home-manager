@@ -1,9 +1,10 @@
 { pkgs, ... }:
 let
   system = builtins.currentSystem;
-  isMac = system == "x86_64-darwin" || system == "aarch64-darwin"; 
-   platformImports  = if isMac then [ ./home-manager/mac.nix ] else [ ./home-manager/linux.nix ];
-in {
+  isMac = system == "x86_64-darwin" || system == "aarch64-darwin";
+  platformImports = if isMac then [ ./home-manager/mac.nix ] else [ ./home-manager/linux.nix ];
+in
+{
   home.stateVersion = "24.05";
 
   imports = platformImports;
