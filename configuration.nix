@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
       ./packages/common.nix
@@ -64,7 +65,7 @@
     enable = true;
     xwayland.enable = true;
   };
-  
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Enable the GNOME Desktop Environment.
 
@@ -111,7 +112,7 @@
     description = "Josh Simmons";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
