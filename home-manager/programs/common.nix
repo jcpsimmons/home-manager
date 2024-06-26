@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  programs.go = {
+    enable = true;
+  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -9,8 +12,7 @@
     source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
     test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 
-    bindkey '^[[A' history-beginning-search-backward
-    bindkey '^[[B' history-beginning-search-forward
+    export PATH=$HOME/go/bin:$PATH
     '';
     oh-my-zsh = {
       enable = true;

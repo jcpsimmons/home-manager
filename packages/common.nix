@@ -23,6 +23,9 @@
     ripgrep
     fzf
 
+    # Lang Specific
+    go
+
     # Networking
     lsof
     nmap
