@@ -6,30 +6,36 @@
 {
   imports = [ ./common.nix ];
   home.packages = with pkgs; [
-    dunst
-    gnome.nautilus
-    gnome.gnome-tweaks
-    gnome.eog
-    gedit
-    gnome.zenity
-    tokyo-night-gtk
-    chromium
+    # Theme/UI Related
     hyprpaper
     hyprpicker
     hypridle
     hyprlock
     hyprcursor
-    libgcc
-    gcc
+    gnome.nautilus
+    gnome.gnome-tweaks
+    gnome.eog
+    gnome.zenity
     nwg-look
-    unzip
-    rofi
-    brave
+    tokyo-night-gtk
+
+    # Apps
+
     arandr
     foot
     wofi
     dolphin
-    vscode
+    dunst
+    gedit
+    chromium
+    rofi
+    brave
+
+    # Lang-Specific
+    libgcc
+    gcc
+
+    # Services
     playerctl
     networkmanager
     networkmanagerapplet

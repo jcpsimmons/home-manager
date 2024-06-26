@@ -18,7 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -52,14 +52,6 @@
   home-manager.users.jsimmons = import ./home.nix;
   home-manager.backupFileExtension = "bak";
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    ohMyZsh = {
-      plugins = [ "git" "zsh-autocomplete" "zsh-autosuggestions" "npm" "colorize" "fzf" "colorize-man-pages" "ripgrep" ];
-    };
-  };
   programs.waybar.enable = true;
   programs.hyprland = {
     enable = true;

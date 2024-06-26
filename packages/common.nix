@@ -2,28 +2,45 @@
 
 {
   home.packages = with pkgs; [
-    tree
-    ffmpeg_7
+    # GUI Applications
     cool-retro-term
+    vscode
+    obsidian
+
+    # Shell
     neovim
+    tmux
+    zsh
+    oh-my-zsh
+    zsh-autocomplete
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+
+    # File Ops Tools
+    tree
+    git
+    unzip
     ripgrep
+    fzf
+
+    # Networking
     lsof
     nmap
-    spotify-player
-    btop
-    killall
-    cool-retro-term
-    fzf
-    tmux
-    git
+
+    # Nix-Related
     nix-prefetch-git
     nil
     nixd
     nixpkgs-fmt
-    unzip
+    
+    # Media
+    ffmpeg_7
+    spotify-player
+    yt-dlp
+
+    # Misc
+    btop
+    killall
     gh
-    vscode
-    zsh
-    oh-my-zsh
   ];
 }

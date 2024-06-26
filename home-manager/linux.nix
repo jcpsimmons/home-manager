@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  imports = [ ../packages/common.nix ../packages/linux.nix ./programs/common.nix ];
   home.username = "jsimmons";
   home.homeDirectory = "/Users/jsimmons";
 
