@@ -261,6 +261,8 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
 --    require('Comment').setup({})
 -- "gc" to comment visual regions/lines
 {
+  require 'kickstart.plugins.indent_line',
+}, {
     "folke/twilight.nvim",
     config = function()
         require("twilight").setup({
@@ -1001,7 +1003,6 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
 --  Uncomment any of the lines below to enable them (you will need to restart nvim).
 --
 -- require 'kickstart.plugins.debug',
--- require 'kickstart.plugins.indent_line',
 -- require 'kickstart.plugins.lint',
 -- require 'kickstart.plugins.autopairs',
 -- require 'kickstart.plugins.neo-tree',
