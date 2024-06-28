@@ -48,5 +48,6 @@
     killall
     gh
     typst
+    dosbox-staging
   ];
 }
