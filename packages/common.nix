@@ -25,6 +25,8 @@
 
     # Lang Specific
     go
+    bun
+    deno
 
     # Networking
     lsof
@@ -45,5 +47,6 @@
     btop
     killall
     gh
+    typst
   ];
 }
