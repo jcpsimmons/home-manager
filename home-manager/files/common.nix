@@ -20,5 +20,9 @@
       # Reverse tab cycle
       bindkey '^[[Z' reverse-menu-complete
     '';
+    "DOSGAMES/README.md".text = ''
+      DOSBOX will automatically mount this folder as C:\
+      Place your DOS games here.
+    '';
   };
 }
