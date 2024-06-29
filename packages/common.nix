@@ -48,6 +48,7 @@
     killall
     gh
     typst
+    (nerdfonts.override { fonts = [ "BigBlueTerminal" ];})
     dosbox-staging
   ];
 }

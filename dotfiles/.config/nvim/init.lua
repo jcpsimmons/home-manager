@@ -299,10 +299,12 @@ require("lazy").setup({ -- NOTE: Plugins can be added with a link (or for a gith
 				},
 				on_open = function()
 					vim.opt.linebreak = true
+					vim.opt.relativenumber = false
 					vim.cmd.colorscheme("everforest")
 				end,
 				on_close = function()
 					vim.opt.linebreak = false
+					vim.opt.relativenumber = true
 					vim.cmd.colorscheme("murphy")
 				end,
 			})

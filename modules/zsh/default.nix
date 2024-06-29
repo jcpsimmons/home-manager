@@ -5,8 +5,11 @@
     enable = true;
     enableCompletion = true;
 
+    syntaxHighlighting.enable = true;
+
     shellAliases = {
-      vi = "nvim";
+      nv = "nvim";
+      cdg = "cd ~/Documents/github";
     };
 
     history = {
