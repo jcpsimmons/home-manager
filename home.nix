@@ -10,10 +10,11 @@ in
   imports = platformImports;
 
   home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
-  home.file.".config/nvim" = {
-    source = ./dotfiles/.config/nvim;
-    recursive = true;
-  };
+  # temp disable so I can use meson
+  # home.file.".config/nvim" = {
+  #   source = ./dotfiles/.config/nvim;
+  #   recursive = true;
+  # };
 
   programs.fzf.enable = true;
   programs.home-manager.enable = true;
