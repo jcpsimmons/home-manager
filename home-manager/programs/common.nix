@@ -14,6 +14,18 @@
 
     export PATH=$HOME/go/bin:$PATH
     '';
+
+    shellAliases = {
+      nv = "nvim";
+      cdg = "cd ~/Documents/github";
+    };
+
+    history = {
+      save = 10000;
+      share = true;
+      size = 10000;
+    };
+
     oh-my-zsh = {
       enable = true;
       plugins = [
@@ -27,6 +39,9 @@
         { name = "hlissner/zsh-autopair"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }
+        {
+          name = "lukechilds/zsh-nvm";
+        }
       ];
     };
   };

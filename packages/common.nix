@@ -27,6 +27,7 @@
     go
     bun
     deno
+    cargo
 
     # Networking
     lsof
@@ -50,5 +51,14 @@
     typst
     (nerdfonts.override { fonts = [ "BigBlueTerminal" ];})
     dosbox-staging
-  ];
+    tldr
+    duf
+    bat
+    entr
+    jq
+    gping
+    speedtest-cli
+    dog
+    ngrok
+    ];
 }
