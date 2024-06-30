@@ -107,7 +107,7 @@
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "BAT1 {icon} {capacity}%",
+		"format": "BAT0 {icon} {capacity}%",
 		"format-icons": [
 			"",
 			"",
@@ -123,7 +123,7 @@
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "BAT2 {icon} {capacity}%",
+		"format": "BAT1 {icon} {capacity}%",
 		"format-icons": [
 			"",
 			"",
