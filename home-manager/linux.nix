@@ -6,11 +6,11 @@
   home.homeDirectory = "/Users/jsimmons";
 
   home.file.".config/hypr" = {
-    source = ./dotfiles/.config/hypr;
+    source = ./dotfiles/hypr;
     recursive = true;
   };
   home.file.".config/waybar" = {
-    source = ./dotfiles/.config/waybar;
+    source = ./dotfiles/waybar;
     recursive = true;
   };
 

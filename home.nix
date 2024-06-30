@@ -11,7 +11,7 @@ in
 
   home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
   home.file.".config/nvim" = {
-    source = ./dotfiles/.config/nvim;
+    source = ./dotfiles/nvim;
     recursive = true;
   };
 
