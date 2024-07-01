@@ -192,11 +192,6 @@ require("lazy").setup({ -- NOTE: Plugins can be added with a link (or for a gith
 		end,
 	},
 	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {},
-	},
-	{
 		"folke/zen-mode.nvim",
 		config = function()
 			require("zen-mode").setup({
