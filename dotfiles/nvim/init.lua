@@ -182,7 +182,7 @@ require("lazy").setup({ -- NOTE: Plugins can be added with a link (or for a gith
 		"folke/twilight.nvim",
 		config = function()
 			require("twilight").setup({
-				context = 0,
+				context = 2,
 				expand = { -- markdown
 					"paragraph",
 					"fenced_code_block",
