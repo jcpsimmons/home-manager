@@ -1,18 +1,18 @@
 { pkgs, ... }:
 
 {
-  programs.go = {
-    enable = true;
-  };
+  programs.fzf.enable = true;
+  programs.home-manager.enable = true;
+  programs.go.enable = true;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     initExtra = ''
-    source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-    test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 
-    export PATH=$HOME/go/bin:$PATH
+      export PATH=$HOME/go/bin:$PATH
     '';
 
     shellAliases = {
@@ -29,8 +29,8 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
-      "git"
-      "fzf"
+        "git"
+        "fzf"
       ];
     };
     zplug = {

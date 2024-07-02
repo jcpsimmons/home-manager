@@ -1,22 +1,13 @@
-{ pkgs, ... }:
+{ ... }:
 let
   system = builtins.currentSystem;
   isMac = system == "x86_64-darwin" || system == "aarch64-darwin";
-  platformImports = if isMac then [ ./home-manager/mac.nix ] else [ ./home-manager/linux.nix ];
+  platformImports = if isMac then [ ./packages/mac.nix ] else [ ./packages/linux.nix ./services/linux.nix ];
 in
 {
   home.stateVersion = "24.05";
 
-  imports = platformImports;
+  imports = platformImports ++ [ ./per-machine-config.nix ./packages/common.nix ./programs/common.nix ./files/common.nix ];
 
-  home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
-  home.file.".config/nvim" = {
-    source = ./dotfiles/nvim;
-    recursive = true;
-  };
-
-
-  programs.fzf.enable = true;
-  programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
 }

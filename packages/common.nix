@@ -38,7 +38,7 @@
     nil
     nixd
     nixpkgs-fmt
-    
+
     # Media
     ffmpeg_7
     spotify-player
@@ -49,7 +49,7 @@
     killall
     gh
     typst
-    (nerdfonts.override { fonts = [ "BigBlueTerminal" ];})
+    (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
     dosbox-staging
     tldr
     duf
@@ -60,5 +60,5 @@
     speedtest-cli
     dog
     ngrok
-    ];
+  ];
 }
