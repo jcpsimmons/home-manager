@@ -28,6 +28,9 @@
     bun
     deno
     cargo
+    haskellPackages.ghcup
+    pipx
+    python3
 
     # Networking
     lsof

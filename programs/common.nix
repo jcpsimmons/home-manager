@@ -13,11 +13,26 @@
       test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 
       export PATH=$HOME/go/bin:$PATH
+
+      if [ -f "~/.workconfig" ]; then
+        source ~/.workconfig
+      fi
+
+      if [ -f "~/.tokens" ]; then
+        source ~/.tokens
+      fi
     '';
 
     shellAliases = {
       nv = "nvim";
       cdg = "cd ~/Documents/github";
+      portsinuse = "sudo lsof -i -P -n | grep LISTEN";
+
+      # Mac only, brew install switchaudio-osx
+      mon = "SwitchAudioSource -s \"Studio Display Speakers\" && SwitchAudioSource -t input -s \"Studio Display Microphone\"";
+      mic = "SwitchAudioSource -s \"Yeti Stereo Microphone\" && SwitchAudioSource -t input -s \"Yeti Stereo Microphone\"";
+      phones = "SwitchAudioSource -s \"Josh’s AirPods Max - Find My\" && SwitchAudioSource -t input -s \"Josh’s AirPods Max - Find My\"";
+      mix = "SwitchAudioSource -s \"Josh’s AirPods Max - Find My\" && SwitchAudioSource -t input -s \"Yeti Stereo Microphone\"";
     };
 
     history = {
