@@ -43,7 +43,6 @@
     nixpkgs-fmt
 
     # Media
-    ffmpeg_7
     spotify-player
     yt-dlp
 
