@@ -15,7 +15,7 @@
     flake-utils.lib.eachDefaultSystem(system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
-        homeConfigurations.workMac = home-manager.lib.homeManagerConfiguration {
+        packages.homeConfigurations.workMac = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           # Specify your home configuration modules here, for example,
@@ -24,7 +24,7 @@
 
           extraSpecialArgs = {
             username = "jsimmons";
-            home.homeDirectory = "/Users/jsimmons";
+            homeDirectory = "/Users/jsimmons";
             };
         };
       }

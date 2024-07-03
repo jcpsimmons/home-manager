@@ -1,4 +1,4 @@
-{ ... }:
+{ username, homeDirectory, ... }:
 # let
 #   system = builtins.currentSystem;
 #   isMac = system == "x86_64-darwin" || system == "aarch64-darwin";
@@ -6,6 +6,9 @@
 # in
 {
   home.stateVersion = "24.05";
+  home.username = username;
+  home.homeDirectory = homeDirectory;
+  home.backupFileExtension = "hmbak";
 
   imports = [ ./packages/common.nix ./programs/common.nix ./files/common.nix ];
 
