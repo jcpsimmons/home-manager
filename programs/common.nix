@@ -14,12 +14,12 @@
 
       export PATH=$HOME/go/bin:$PATH
 
-      if [ -f "~/.workconfig" ]; then
-        source ~/.workconfig
+      if [ -f $HOME/.workconfig ]; then
+        source $HOME/.workconfig
       fi
 
-      if [ -f "~/.tokens" ]; then
-        source ~/.tokens
+      if [ -f $HOME/.tokens ]; then
+        source $HOME/.tokens
       fi
     '';
 
