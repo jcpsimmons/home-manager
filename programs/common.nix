@@ -8,5 +8,5 @@
 
   # Lengthier configs should have their own file
   # and be imported here.
-  imports = [ ./zsh.nix ./foot.nix ./gtk.nix ];
+  imports = [ ./zsh.nix ];
 }
