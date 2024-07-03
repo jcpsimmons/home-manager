@@ -15,6 +15,7 @@
     flake-utils.lib.eachDefaultSystem(system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
+        # nix run home-manager -- switch --flake '.#workMac' -b bak
         packages.homeConfigurations.workMac = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
