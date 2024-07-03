@@ -685,6 +685,7 @@ require("lazy").setup({ -- NOTE: Plugins can be added with a link (or for a gith
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				nix = { "nixpkgs-fmt" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--

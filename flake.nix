@@ -12,7 +12,7 @@
   };
 
   outputs = { nixpkgs, home-manager, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem(system:
+    flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
         # nix run home-manager -- switch --flake '.#workMac' -b bak
@@ -27,7 +27,7 @@
             username = "jsimmons";
             homeDirectory = "/Users/jsimmons";
             outputName = "workMac"; # there's probably a better way to get this
-            };
+          };
         };
       }
     );
