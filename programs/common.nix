@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, outputName, ... }:
 
 {
   programs.fzf.enable = true;
@@ -33,6 +33,7 @@
       mic = "SwitchAudioSource -s \"Yeti Stereo Microphone\" && SwitchAudioSource -t input -s \"Yeti Stereo Microphone\"";
       phones = "SwitchAudioSource -s \"Josh’s AirPods Max - Find My\" && SwitchAudioSource -t input -s \"Josh’s AirPods Max - Find My\"";
       mix = "SwitchAudioSource -s \"Josh’s AirPods Max - Find My\" && SwitchAudioSource -t input -s \"Yeti Stereo Microphone\"";
+  hms = "nix run home-manager -- switch --flake '.#${outputName}' -b bak";
     };
 
     history = {

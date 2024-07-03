@@ -26,6 +26,7 @@
           extraSpecialArgs = {
             username = "jsimmons";
             homeDirectory = "/Users/jsimmons";
+            outputName = "workMac"; # there's probably a better way to get this
             };
         };
       }

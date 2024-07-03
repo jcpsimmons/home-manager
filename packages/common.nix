@@ -15,6 +15,8 @@
     zsh-autocomplete
     zsh-autosuggestions
     zsh-syntax-highlighting
+    tldr
+    jq
 
     # File Ops Tools
     tree
@@ -22,6 +24,19 @@
     unzip
     ripgrep
     fzf
+    bat
+    entr
+    duf
+
+    # Process Handling
+    btop
+    killall
+
+    # Networking
+    gping
+    speedtest-cli
+    dog
+    ngrok
 
     # Lang Specific
     go
@@ -46,20 +61,9 @@
     yt-dlp
 
     # Misc
-    btop
-    killall
     gh
     typst
     (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
     dosbox-staging
-    tldr
-    duf
-    bat
-    entr
-    jq
-    gping
-    speedtest-cli
-    dog
-    ngrok
   ];
 }
