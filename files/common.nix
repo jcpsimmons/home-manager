@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   home.file = {
@@ -25,15 +25,6 @@
       Place your DOS games here.
     '';
 
-    # Linux-only but harmless to Mac
-    ".config/hypr" = {
-      source = ../dotfiles/hypr;
-      recursive = true;
-    };
-    ".config/waybar" = {
-      source = ../dotfiles/waybar;
-      recursive = true;
-    };
     ".config/nvim" = {
       source = ../dotfiles/nvim;
       recursive = true;

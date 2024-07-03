@@ -1,5 +1,5 @@
-{...}:
+{ ... }:
 
 {
-imports = [./foot.nix ./gtk.nix];
+  imports = [ ./common.nix ./foot.nix ./gtk.nix ];
 }
