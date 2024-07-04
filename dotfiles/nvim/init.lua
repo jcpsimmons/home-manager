@@ -922,14 +922,11 @@ require("lazy").setup({
 					file_height = 34,
           -- stylua: ignore
           center = {
-            { action = "Telescope oldfiles",                                       desc = "",    icon = " ", key = "r" },
+            { action = "Telescope oldfiles",desc = "",icon = " ", key = "r" },
           },
 					footer = function()
-						local stats = require("lazy").stats()
-						local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 						return {
 							"",
-							-- "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
 						}
 					end,
 				},

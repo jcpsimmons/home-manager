@@ -52,7 +52,7 @@
         cut -f2- |
         # Select the first line after sorting, which is effectively random
         head -n 1 |
-        fold -w 49
+        fmt -w 50
 
       '';
       executable = true;
