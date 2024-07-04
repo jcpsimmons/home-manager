@@ -911,11 +911,13 @@ require("lazy").setup({
 		event = "VimEnter",
 		opts = function(_, opts)
 			local preview = opts.preview or {}
-			preview.command = "kjv Matthew:3:1 | cat"
-			preview.file_path = "~/.config/nvim/blank.txt"
+			preview.command = "sh"
+			preview.file_path = "~/.config/nvim/verse.sh"
 			preview.file_width = 69
 			preview.file_height = 10
 			opts.preview = preview
+
+			opts.config = {}
 			return opts
 		end,
 		-- dependencies = { { "nvim-tree/nvim-web-devicons" } },

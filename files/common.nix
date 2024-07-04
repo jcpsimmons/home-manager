@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.file = {
@@ -28,6 +28,25 @@
     ".config/nvim" = {
       source = ../dotfiles/nvim;
       recursive = true;
+
+    };
+    ".config/nvim/verse.sh" = {
+      text = ''
+        #!${pkgs.bash}/bin/bash
+        # Get the text of Matthew from kjv
+        ${pkgs.kjv}/bin/kjv Matthew |
+        # Use cat to pass the output to the next command
+        cat |
+        # Use awk to prepend a random number followed by a tab to each line
+        awk 'BEGIN {srand()} {print rand() "\t" $0}' |
+        # Sort the lines based on the random number
+        sort -k1,1n |
+        # Remove the random number and tab, leaving only the original text
+        cut -f2- |
+        # Select the first line after sorting, which is effectively random
+        head -n 1
+      '';
+      executable = true;
     };
   };
 }
