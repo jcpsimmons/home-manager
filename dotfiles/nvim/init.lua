@@ -917,7 +917,12 @@ require("lazy").setup({
 			preview.file_height = 10
 			opts.preview = preview
 
-			opts.config = {}
+			opts.config = {
+
+				center = {
+					{ desc = "" },
+				},
+			}
 			return opts
 		end,
 		-- dependencies = { { "nvim-tree/nvim-web-devicons" } },
