@@ -61,6 +61,7 @@
     yt-dlp
 
     # Misc
+    ponysay
     gh
     typst
     (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
