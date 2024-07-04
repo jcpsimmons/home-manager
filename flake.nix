@@ -26,6 +26,17 @@
             outputName = "workMac"; # there's probably a better way to get this
           };
         };
+
+        packages.homeConfigurations.personalMac = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+          modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
+
+          extraSpecialArgs = {
+          username = "simsies";
+            homeDirectory = "/Users/simsies";
+            outputName = "personalMac"; # there's probably a better way to get this
+          };
+        };
       }
     );
 }

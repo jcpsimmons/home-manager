@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    kjv
+
     # GUI Applications
     cool-retro-term
     vscode

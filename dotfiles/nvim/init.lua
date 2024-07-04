@@ -907,11 +907,18 @@ require("lazy").setup({
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
 	{
-		"startup-nvim/startup.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		config = function()
-			require("startup").setup()
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		opts = function(_, opts)
+			local preview = opts.preview or {}
+			preview.command = "kjv Matthew:3:1 | cat"
+			preview.file_path = "~/.config/nvim/blank.txt"
+			preview.file_width = 69
+			preview.file_height = 10
+			opts.preview = preview
+			return opts
 		end,
+		-- dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 }, {
 	ui = {
