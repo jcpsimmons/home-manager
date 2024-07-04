@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
-# Add cross-compatible packages to ./mac.nix
-# These are linux-only packages
 
 {
   imports = [ ./common.nix ];
