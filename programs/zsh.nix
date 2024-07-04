@@ -24,6 +24,7 @@
       nv = "nvim";
       cdg = "cd ~/Documents/github";
       portsinuse = "sudo lsof -i -P -n | grep LISTEN";
+      verse = "sh $HOME/.config/nvim/verse.sh";
 
       # Mac only, brew install switchaudio-osx
       mon = "SwitchAudioSource -s \"Studio Display Speakers\" && SwitchAudioSource -t input -s \"Studio Display Microphone\"";

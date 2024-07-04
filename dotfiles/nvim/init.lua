@@ -55,12 +55,12 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = {
-	tab = "» ",
-	trail = "·",
-	nbsp = "␣",
-}
+-- vim.opt.list = true
+-- vim.opt.listchars = {
+-- 	tab = "» ",
+-- 	trail = "·",
+-- 	nbsp = "␣",
+-- }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -151,9 +151,9 @@ vim.opt.termguicolors = true
 
 require("lazy").setup({
 	"tpope/vim-sleuth",
-	{
-		require("kickstart.plugins.indent_line"),
-	},
+	-- {
+	-- 	require("kickstart.plugins.indent_line"),
+	-- },
 	{
 		"folke/twilight.nvim",
 		config = function()
@@ -909,23 +909,50 @@ require("lazy").setup({
 	{
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
-		opts = function(_, opts)
-			local preview = opts.preview or {}
-			preview.command = "sh"
-			preview.file_path = "~/.config/nvim/verse.sh"
-			preview.file_width = 69
-			preview.file_height = 10
-			opts.preview = preview
-
-			opts.config = {
-
-				center = {
-					{ desc = "" },
+		opts = function()
+			local opts = {
+				theme = "doom",
+				hide = {
+					statusline = true,
+				},
+				config = {
+					command = 'cat ~/.config/nvim/cross.txt && echo "\n\n\n" & sh',
+					file_path = "~/.config/nvim/verse.sh",
+					file_width = 50,
+					file_height = 34,
+          -- stylua: ignore
+          center = {
+            { action = "Telescope oldfiles",                                       desc = "",    icon = " ", key = "r" },
+          },
+					footer = function()
+						local stats = require("lazy").stats()
+						local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+						return {
+							"",
+							-- "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
+						}
+					end,
 				},
 			}
+
+			for _, button in ipairs(opts.config.center) do
+				button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+				button.key_format = "  %s"
+			end
+
+			-- close Lazy and re-open when the dashboard is ready
+			if vim.o.filetype == "lazy" then
+				vim.cmd.close()
+				vim.api.nvim_create_autocmd("User", {
+					pattern = "DashboardLoaded",
+					callback = function()
+						require("lazy").show()
+					end,
+				})
+			end
+
 			return opts
 		end,
-		-- dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 }, {
 	ui = {
