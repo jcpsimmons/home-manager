@@ -28,13 +28,24 @@
         };
 
         packages.homeConfigurations.personalMac = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+          inherit pkgs;
           modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
 
           extraSpecialArgs = {
-          username = "simsies";
+            username = "simsies";
             homeDirectory = "/Users/simsies";
             outputName = "personalMac"; # there's probably a better way to get this
+          };
+        };
+
+        packages.homeConfigurations.mediaServer = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+
+          extraSpecialArgs = {
+            username = "jsimmons";
+            homeDirectory = "/home/jsimmons";
+            outputName = "mediaServer"; # there's probably a better way to get this
           };
         };
       }
