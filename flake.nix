@@ -48,6 +48,16 @@
             outputName = "mediaServer"; # there's probably a better way to get this
           };
         };
+        packages.homeConfigurations.gpuBox = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+
+          extraSpecialArgs = {
+            username = "jcpsimmons";
+            homeDirectory = "/home/jcpsimmons";
+            outputName = "gpubox"; # there's probably a better way to get this
+          };
+        };
       }
     );
 }
