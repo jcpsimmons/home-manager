@@ -55,7 +55,7 @@
           extraSpecialArgs = {
             username = "jcpsimmons";
             homeDirectory = "/home/jcpsimmons";
-            outputName = "gpubox"; # there's probably a better way to get this
+            outputName = "gpuBox"; # there's probably a better way to get this
           };
         };
       }
