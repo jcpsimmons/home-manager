@@ -57,6 +57,13 @@
       '';
       executable = true;
     };
+    ".scripts/coding-time-announce.sh" = {
+      text = ''
+        #!${pkgs.bash}/bin/bash
+        ${pkgs.ponysay}/bin/ponysay "Hello Josh! Want to code? Teehee!!"
+      '';
+      executable = true;
+    };
   };
 }
 

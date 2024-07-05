@@ -916,8 +916,8 @@ require("lazy").setup({
 					statusline = true,
 				},
 				config = {
-					command = 'cat ~/.config/nvim/cross.txt && echo "\n\n\n" & sh',
-					file_path = "~/.config/nvim/verse.sh",
+					command = "sh",
+					file_path = "~/.scripts/coding-time-announce.sh",
 					file_width = 50,
 					file_height = 34,
           -- stylua: ignore
