@@ -66,7 +66,7 @@
     ponysay
     gh
     typst
-    (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
+    (nerdfonts.override { fonts = [ "BigBlueTerminal" "JetBrainsMono" ]; })
     dosbox-staging
   ];
 }
