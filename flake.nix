@@ -40,7 +40,7 @@
 
         packages.homeConfigurations.mediaServer = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+          modules = [ ./home.nix ./packages/linux.nix ./programs/rpi.nix ./files/linux.nix ];
 
           extraSpecialArgs = {
             username = "jsimmons";
