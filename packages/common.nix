@@ -8,6 +8,7 @@
     cool-retro-term
     vscode
     obsidian
+    google-chrome
 
     # Shell
     neovim
