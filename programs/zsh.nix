@@ -1,4 +1,4 @@
-{ pkgs, outputName, ... }:
+{ pkgs, outputName, homeDirectory, ... }:
 
 {
   programs.zsh = {
@@ -32,7 +32,7 @@
       phones = "SwitchAudioSource -s \"Josh’s AirPods Max - Find My\" && SwitchAudioSource -t input -s \"Josh’s AirPods Max - Find My\"";
       mix = "SwitchAudioSource -s \"Josh’s AirPods Max - Find My\" && SwitchAudioSource -t input -s \"Yeti Stereo Microphone\"";
       inithms = "nix run home-manager -- switch --flake '.#${outputName}' -b bak";
-      hms = "home-manager switch --flake .#${outputName} -b bak";
+      hms = "home-manager switch --flake ${homeDirectory}/.config/home-manager/flake.nix#${outputName} -b bak";
     };
 
     history = {

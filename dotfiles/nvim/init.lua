@@ -662,6 +662,10 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				nix = { "nixpkgs_fmt" },
+				typescript = { { "prettierd", "prettier" } },
+				typescriptreact = { { "prettierd", "prettier" } },
+				javascript = { { "prettierd", "prettier" } },
+				javascriptreact = { { "prettierd", "prettier" } },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -906,13 +910,13 @@ require("lazy").setup({
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  {
-  "0x00-ketsu/autosave.nvim",
-  event = {"InsertLeave","TextChanged"},
-    -- config = function ()
-    --  require('autosave').setup {}
-    -- end
-    },
+	{
+		"0x00-ketsu/autosave.nvim",
+		event = { "InsertLeave", "TextChanged" },
+		-- config = function ()
+		--  require('autosave').setup {}
+		-- end
+	},
 	{
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
@@ -957,6 +961,9 @@ require("lazy").setup({
 
 			return opts
 		end,
+	},
+	{
+		"github/copilot.vim",
 	},
 }, {
 	ui = {
