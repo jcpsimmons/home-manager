@@ -14,7 +14,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
-        # nix run home-manager -- switch --flake '.#workMac' -b bak
+
         packages.homeConfigurations.workMac = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
@@ -23,7 +23,7 @@
           extraSpecialArgs = {
             username = "jsimmons";
             homeDirectory = "/Users/jsimmons";
-            outputName = "workMac"; # there's probably a better way to get this
+            outputName = "workMac";
           };
         };
 
@@ -34,7 +34,7 @@
           extraSpecialArgs = {
             username = "simsies";
             homeDirectory = "/Users/simsies";
-            outputName = "personalMac"; # there's probably a better way to get this
+            outputName = "personalMac";
           };
         };
 
@@ -45,7 +45,7 @@
           extraSpecialArgs = {
             username = "jsimmons";
             homeDirectory = "/home/jsimmons";
-            outputName = "mediaServer"; # there's probably a better way to get this
+            outputName = "mediaServer";
           };
         };
         packages.homeConfigurations.gpuBox = home-manager.lib.homeManagerConfiguration {
@@ -55,7 +55,7 @@
           extraSpecialArgs = {
             username = "jcpsimmons";
             homeDirectory = "/home/jcpsimmons";
-            outputName = "gpuBox"; # there's probably a better way to get this
+            outputName = "gpuBox";
           };
         };
         packages.homeConfigurations.gtak = home-manager.lib.homeManagerConfiguration {
@@ -65,7 +65,7 @@
           extraSpecialArgs = {
             username = "jsimmons";
             homeDirectory = "/home/jsimmons";
-            outputName = "gtak"; # there's probably a better way to get this
+            outputName = "gtak";
           };
         };
       }
