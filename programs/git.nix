@@ -10,5 +10,13 @@
       "node_modules"
       ".DS_Store"
     ];
+    includes = [
+      {
+        contents.user = {
+          email = "joshcsimmons@hey.com";
+          name = "Josh Simmons";
+        };
+      };
+    ];
   };
 }

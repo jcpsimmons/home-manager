@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Hack Nerd Font Mono:size=8";
+        font = "BigBlueTermPlus Nerd Font:size=12";
         pad = "12x12";
         dpi-aware = "yes";
       };

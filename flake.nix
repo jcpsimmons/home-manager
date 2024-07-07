@@ -58,6 +58,16 @@
             outputName = "gpuBox"; # there's probably a better way to get this
           };
         };
+  packages.homeConfigurations.gtak = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+
+          extraSpecialArgs = {
+            username = "jsimmons";
+            homeDirectory = "/home/jsimmons";
+            outputName = "gtak"; # there's probably a better way to get this
+          };
+        };
       }
     );
 }
