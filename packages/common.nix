@@ -48,6 +48,7 @@
     cargo
     pipx
     python3
+    nodePackages_latest.typescript-language-server
 
     # Networking
     lsof
