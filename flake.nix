@@ -15,57 +15,61 @@
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
 
-        packages.homeConfigurations.workMac = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        packages.homeConfigurations = {
+          workMac = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
 
-          modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
+            modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
 
-          extraSpecialArgs = {
-            username = "jsimmons";
-            homeDirectory = "/Users/jsimmons";
-            outputName = "workMac";
+            extraSpecialArgs = {
+              username = "jsimmons";
+              homeDirectory = "/Users/jsimmons";
+              outputName = "workMac";
+            };
           };
-        };
 
-        packages.homeConfigurations.personalMac = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
+          personalMac = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
 
-          extraSpecialArgs = {
-            username = "simsies";
-            homeDirectory = "/Users/simsies";
-            outputName = "personalMac";
+            extraSpecialArgs = {
+              username = "simsies";
+              homeDirectory = "/Users/simsies";
+              outputName = "personalMac";
+            };
           };
-        };
 
-        packages.homeConfigurations.mediaServer = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ./packages/linux.nix ./programs/rpi.nix ./files/linux.nix ];
+          mediaServer = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ ./home.nix ./packages/linux.nix ./programs/rpi.nix ./files/linux.nix ];
 
-          extraSpecialArgs = {
-            username = "jsimmons";
-            homeDirectory = "/home/jsimmons";
-            outputName = "mediaServer";
+            extraSpecialArgs = {
+              username = "jsimmons";
+              homeDirectory = "/home/jsimmons";
+              outputName = "mediaServer";
+            };
           };
-        };
-        packages.homeConfigurations.gpuBox = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
 
-          extraSpecialArgs = {
-            username = "jcpsimmons";
-            homeDirectory = "/home/jcpsimmons";
-            outputName = "gpuBox";
+          gpuBox = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+
+            extraSpecialArgs = {
+              username = "jcpsimmons";
+              homeDirectory = "/home/jcpsimmons";
+              outputName = "gpuBox";
+            };
           };
-        };
-        packages.homeConfigurations.gtak = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
 
-          extraSpecialArgs = {
-            username = "jsimmons";
-            homeDirectory = "/home/jsimmons";
-            outputName = "gtak";
+          gtak = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+
+            extraSpecialArgs = {
+              username = "jsimmons";
+              homeDirectory = "/home/jsimmons";
+              outputName = "gtak";
+            };
           };
         };
       }
