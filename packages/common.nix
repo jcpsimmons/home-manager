@@ -69,5 +69,6 @@
     typst
     (nerdfonts.override { fonts = [ "BigBlueTerminal" "JetBrainsMono" ]; })
     dosbox-staging
+    newsboat
   ];
 }
