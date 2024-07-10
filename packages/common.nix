@@ -20,6 +20,7 @@
     zsh-syntax-highlighting
     tldr
     jq
+    devenv
 
     # File Ops Tools
     tree
@@ -49,6 +50,7 @@
     pipx
     python3
     nodePackages_latest.typescript-language-server
+    pnpm
 
     # Networking
     lsof
