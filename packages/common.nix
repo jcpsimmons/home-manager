@@ -50,7 +50,7 @@
     pipx
     python3
     nodePackages_latest.typescript-language-server
-    pnpm
+    vscode-langservers-extracted
 
     # Networking
     lsof
