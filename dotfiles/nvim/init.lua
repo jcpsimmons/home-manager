@@ -376,7 +376,7 @@ require("lazy").setup({
 							formatting = { command = { "nixpkgs-fmt" } },
 							nix = {
 								maxMemoryMB = 8000,
-								flake = { autoArchive = nil, autoEvalInputs = true },
+								flake = { autoArchive = nil, autoEvalInputs = false },
 							},
 						},
 					},
