@@ -367,6 +367,8 @@ require("lazy").setup({
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				-- tsserver = {},
 
+				tailwindcss = {},
+
 				tsserver = {},
 
 				emmet_language_server = {},
@@ -630,6 +632,7 @@ require("lazy").setup({
 			signs = false,
 		},
 	},
+	{ "tpope/vim-surround" },
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
@@ -648,7 +651,8 @@ require("lazy").setup({
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			-- disabled to use tpope/vim-surround instead
+			-- require("mini.surround").setup()
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,

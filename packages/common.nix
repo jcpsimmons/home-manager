@@ -52,6 +52,7 @@
     nodePackages_latest.typescript-language-server
     vscode-langservers-extracted
     emmet-language-server
+    tailwindcss-language-server
 
     # Networking
     lsof
