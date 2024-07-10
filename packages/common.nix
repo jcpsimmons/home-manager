@@ -51,6 +51,7 @@
     python3
     nodePackages_latest.typescript-language-server
     vscode-langservers-extracted
+    emmet-language-server
 
     # Networking
     lsof

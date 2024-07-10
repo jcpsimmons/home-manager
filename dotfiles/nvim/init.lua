@@ -369,8 +369,10 @@ require("lazy").setup({
 
 				tsserver = {},
 
+				emmet_language_server = {},
+
 				eslint = {
-					on_attach = function(client, bufnr)
+					on_attach = function(_, bufnr)
 						vim.api.nvim_create_autocmd("BufWritePre", {
 							buffer = bufnr,
 							command = "EslintFixAll",
