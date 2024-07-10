@@ -26,6 +26,8 @@
       portsinuse = "sudo lsof -i -P -n | grep LISTEN";
       verse = "sh $HOME/.config/nvim/verse.sh";
 
+      gmcsg = "gcmsg"; # I always mistype this
+
       # Mac only, brew install switchaudio-osx
       mon = "SwitchAudioSource -s \"Studio Display Speakers\" && SwitchAudioSource -t input -s \"Studio Display Microphone\"";
       mic = "SwitchAudioSource -s \"Yeti Stereo Microphone\" && SwitchAudioSource -t input -s \"Yeti Stereo Microphone\"";
