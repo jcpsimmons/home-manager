@@ -3,7 +3,15 @@
   programs.newsboat = {
     enable = true;
     urls = [
-      { url = "https://torrentfreak.com/feed/"; }
+
+      {
+        title = "Daily Readings";
+        url = "https://orthocal.info/api/feed/";
+      }
+      { url = "https://inklesspen.blog/feed"; }
+      {
+        url = "https://torrentfreak.com/feed/";
+      }
       {
         title = "El País Edición México";
         url = "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/mexico/portada";
