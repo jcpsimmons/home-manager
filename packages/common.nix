@@ -43,6 +43,7 @@
     ngrok
 
     # Lang Specific
+    gopls
     go
     bun
     deno
@@ -53,6 +54,7 @@
     vscode-langservers-extracted
     emmet-language-server
     tailwindcss-language-server
+    kubectl
 
     # Networking
     lsof
