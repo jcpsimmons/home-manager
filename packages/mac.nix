@@ -6,5 +6,6 @@
     # GUI Apps
     stats
     raycast
+    tableplus
   ];
 }
