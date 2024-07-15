@@ -357,14 +357,10 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
-				gopls = { cmd = { "gopls", "serve" } },
-
+				gopls = { cmd = { os.getenv("HOME") .. "/.nix-profile/bin/gopls" } },
 				tailwindcss = {},
-
 				tsserver = {},
-
 				emmet_language_server = {},
-
 				eslint = {
 					on_attach = function(_, bufnr)
 						vim.api.nvim_create_autocmd("BufWritePre", {
@@ -373,7 +369,6 @@ require("lazy").setup({
 						})
 					end,
 				},
-
 				nil_ls = {
 					rootPatterns = { "flake.nix" },
 					settings = {
@@ -386,7 +381,6 @@ require("lazy").setup({
 						},
 					},
 				},
-
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
@@ -414,7 +408,12 @@ require("lazy").setup({
 
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
-			local ensure_installed = vim.tbl_keys(servers or {})
+			local ensure_installed = {}
+			for server_name, _ in pairs(servers) do
+				if server_name ~= "gopls" then
+					table.insert(ensure_installed, server_name)
+				end
+			end
 
 			require("mason-tool-installer").setup({
 				ensure_installed = ensure_installed,
