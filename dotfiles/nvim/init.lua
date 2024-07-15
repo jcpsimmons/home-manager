@@ -431,6 +431,9 @@ require("lazy").setup({
 					end,
 				},
 			})
+			require("lspconfig")["gopls"].setup({
+				cmd = { os.getenv("HOME") .. "/.nix-profile/bin/gopls" },
+			})
 		end,
 	},
 	{ -- Autoformat
