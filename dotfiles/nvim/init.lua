@@ -20,6 +20,8 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
@@ -809,8 +811,9 @@ require("lazy").setup({
 					visible = true,
 					show_hidden_count = true,
 					hide_dotfiles = false,
-					hide_gitignored = true,
+					hide_gitignored = false,
 					hide_by_name = {
+						"node_modules",
 						".git",
 						".DS_Store",
 						"thumbs.db",
