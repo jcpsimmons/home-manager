@@ -429,9 +429,10 @@ require("lazy").setup({
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 			})
-			require("mason-tool-installer").setup({
-				ensure_installed = ensure_installed,
-			})
+			-- tmp disable to see if this fixes preinstalled lsps
+			-- require("mason-tool-installer").setup({
+			-- 	ensure_installed = ensure_installed,
+			-- })
 
 			require("mason-lspconfig").setup({
 				handlers = {
@@ -827,6 +828,11 @@ require("lazy").setup({
 				},
 			},
 		},
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
 }, {
 	ui = {
