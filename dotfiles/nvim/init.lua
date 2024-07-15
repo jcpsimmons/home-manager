@@ -357,19 +357,7 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
-				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				-- tsserver = {},
-
-				gopls = {},
+				gopls = { cmd = { "gopls", "serve" } },
 
 				tailwindcss = {},
 
@@ -413,6 +401,7 @@ require("lazy").setup({
 						},
 					},
 				},
+				stylua = {},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -426,13 +415,10 @@ require("lazy").setup({
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
+
+			require("mason-tool-installer").setup({
+				ensure_installed = ensure_installed,
 			})
-			-- tmp disable to see if this fixes preinstalled lsps
-			-- require("mason-tool-installer").setup({
-			-- 	ensure_installed = ensure_installed,
-			-- })
 
 			require("mason-lspconfig").setup({
 				handlers = {
@@ -832,7 +818,11 @@ require("lazy").setup({
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
+		opts = { settings = {
+			jsx_close_tag = {
+				enable = true,
+			},
+		} },
 	},
 }, {
 	ui = {

@@ -43,6 +43,7 @@
     ngrok
 
     # Lang Specific
+    stylua
     gopls
     go
     bun
