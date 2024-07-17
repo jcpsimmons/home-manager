@@ -66,6 +66,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- fix up typescript stuff on save
+vim.cmd([[
+  augroup TSToolsAutoCommands
+    autocmd!
+    autocmd BufWritePre *.ts,*.tsx lua TSToolsActions()
+  augroup END
+]])
+
+function TSToolsActions()
+  vim.cmd('TSToolsAddMissingImports')
+  vim.cmd('TSToolsFixAll')
+  vim.cmd('TSToolsRemoveUnusedImports')
+end
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
