@@ -12,7 +12,6 @@
       config.keys = {
           {key="LeftArrow", mods="OPT", action=wezterm.action{SendString="\x1bb"}},
           {key="RightArrow", mods="OPT", action=wezterm.action{SendString="\x1bf"}},
-        }
       }
       config.color_scheme = 'Homebrew (Gogh)'
 
