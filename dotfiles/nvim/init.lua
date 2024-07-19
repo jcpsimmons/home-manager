@@ -66,6 +66,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- fix up typescript stuff on save
+vim.cmd([[
+  augroup TSToolsAutoCommands
+    autocmd!
+    autocmd BufWritePre *.ts,*.tsx lua TSToolsActions()
+  augroup END
+]])
+
+function TSToolsActions()
+	vim.cmd("TSToolsAddMissingImports")
+	vim.cmd("TSToolsFixAll")
+	vim.cmd("TSToolsRemoveUnusedImports")
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -150,45 +164,17 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
-		event = "VimEnter",
-		config = function()
-			require("which-key").setup()
-			require("which-key").register({
-				["<leader>c"] = {
-					name = "[C]ode",
-					_ = "which_key_ignore",
-				},
-				["<leader>d"] = {
-					name = "[D]ocument",
-					_ = "which_key_ignore",
-				},
-				["<leader>r"] = {
-					name = "[R]ename",
-					_ = "which_key_ignore",
-				},
-				["<leader>s"] = {
-					name = "[S]earch",
-					_ = "which_key_ignore",
-				},
-				["<leader>w"] = {
-					name = "[W]orkspace",
-					_ = "which_key_ignore",
-				},
-				["<leader>t"] = {
-					name = "[T]oggle",
-					_ = "which_key_ignore",
-				},
-				["<leader>h"] = {
-					name = "Git [H]unk",
-					_ = "which_key_ignore",
-				},
-			})
-			require("which-key").register({
-				["<leader>h"] = { "Git [H]unk" },
-			}, {
-				mode = "v",
-			})
-		end,
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
