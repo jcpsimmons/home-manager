@@ -53,6 +53,7 @@
     zplug = {
       enable = true;
       plugins = [
+        { name = "MichaelAquilina/zsh-you-should-use"; }
         { name = "hlissner/zsh-autopair"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }

@@ -87,7 +87,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 vim.opt.termguicolors = true
 
-require("lazy").setup({
+local plugins = {
 	"tpope/vim-sleuth",
 	{
 		"folke/zen-mode.nvim",
@@ -795,7 +795,35 @@ require("lazy").setup({
 			},
 		} },
 	},
-}, {
+}
+
+local home = os.getenv("HOME")
+local workconfig_path = home .. "/.config/nvim/workconfig.lua"
+
+-- Check if the workconfig.lua file exists
+local file_exists = function(path)
+	local f = io.open(path, "r")
+	if f then
+		f:close()
+		return true
+	end
+	return false
+end
+
+if file_exists(workconfig_path) then
+	workconfig = dofile(workconfig_path)
+	if workconfig and workconfig.codeium_server_config then
+		workconfig.codeium_server_config()
+	end
+	if workconfig and workconfig.plugin_config then
+		work_plugins = workconfig.plugin_config
+		for _, plugin in ipairs(workconfig.plugin_config) do
+			table.insert(plugins, plugin)
+		end
+	end
+end
+
+require("lazy").setup(plugins, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
 		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
