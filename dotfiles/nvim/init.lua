@@ -66,19 +66,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- fix up typescript stuff on save
-vim.cmd([[
-  augroup TSToolsAutoCommands
-    autocmd!
-    autocmd BufWritePre *.ts,*.tsx lua TSToolsActions()
-  augroup END
-]])
-
-function TSToolsActions()
-	vim.cmd("TSToolsAddMissingImports")
-	vim.cmd("TSToolsFixAll")
-	vim.cmd("TSToolsRemoveUnusedImports")
-end
+-- use typescript-tools with conform to format on save
+local autocmd = vim.api.nvim_create_autocmd
+local Format = vim.api.nvim_create_augroup("Format", { clear = true })
+autocmd("BufWritePre", {
+	group = Format,
+	pattern = "*.ts,*.tsx,*.jsx,*.js",
+	callback = function(args)
+		vim.cmd("TSToolsOrganizeImports sync") -- sync keyword avoids race cond.
+		vim.cmd("TSToolsAddMissingImports sync")
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -90,19 +89,6 @@ vim.opt.termguicolors = true
 
 require("lazy").setup({
 	"tpope/vim-sleuth",
-	{
-		"folke/twilight.nvim",
-		config = function()
-			require("twilight").setup({
-				context = 2,
-				expand = { -- markdown
-					"paragraph",
-					"fenced_code_block",
-					"list",
-				},
-			})
-		end,
-	},
 	{
 		"folke/zen-mode.nvim",
 		config = function()
@@ -345,7 +331,8 @@ require("lazy").setup({
 			local servers = {
 				gopls = { cmd = { os.getenv("HOME") .. "/.nix-profile/bin/gopls" } },
 				tailwindcss = {},
-				tsserver = {},
+				-- temp disable to try typescript-tools only
+				-- tsserver = {},
 				emmet_language_server = {},
 				eslint = {
 					on_attach = function(_, bufnr)
