@@ -584,6 +584,9 @@ local plugins = {
 	{ "tpope/vim-surround" },
 	{
 		"nvim-lualine/lualine.nvim",
+		opts = {
+			theme = "16color",
+		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	{ -- Collection of various small independent plugins/modules

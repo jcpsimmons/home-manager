@@ -30,6 +30,11 @@
 
       config.window_decorations = "RESIZE"
 
+      config.default_cursor_style = "BlinkingBlock"
+      config.cursor_blink_rate = 200
+      config.cursor_blink_ease_in = "Constant" 
+      config.cursor_blink_ease_out = "Constant"
+
       config.text_blink_rate = 300
 
       return config
