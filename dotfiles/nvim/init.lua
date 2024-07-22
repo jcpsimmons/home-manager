@@ -22,7 +22,6 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.cmdheight = 0
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
@@ -126,28 +125,6 @@ local plugins = {
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = {
-					text = "+",
-				},
-				change = {
-					text = "~",
-				},
-				delete = {
-					text = "_",
-				},
-				topdelete = {
-					text = "‾",
-				},
-				changedelete = {
-					text = "~",
-				},
-			},
-		},
 	},
 	{
 		"folke/which-key.nvim",
@@ -461,6 +438,7 @@ local plugins = {
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = { -- Snippet Engine & its associated nvim-cmp source
+			"mlaursen/vim-react-snippets",
 			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
@@ -492,6 +470,7 @@ local plugins = {
 		},
 		config = function()
 			-- See `:help cmp`
+			require("vim-react-snippets").lazy_load()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
