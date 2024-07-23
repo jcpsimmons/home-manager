@@ -20,7 +20,7 @@
     zsh-syntax-highlighting
     tldr
     jq
-    devenv
+    direnv
 
     # File Ops Tools
     tree
