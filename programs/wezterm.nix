@@ -35,7 +35,7 @@
       config.cursor_blink_ease_in = "Constant" 
       config.cursor_blink_ease_out = "Constant"
 
-      config.text_blink_rate = 300
+      config.text_blink_rate = 250
 
       return config
     '';
