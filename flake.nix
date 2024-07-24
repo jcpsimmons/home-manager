@@ -8,18 +8,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
+
   };
 
-  outputs = { nixpkgs, home-manager, flake-utils, ... }:
+  outputs = { nixpkgs, home-manager, flake-utils, ghostty, ... }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        gpkgs = ghostty.packages.${system};
+      in
       {
 
         packages.homeConfigurations = {
           workMac = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
-            modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
+            modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix { home.packages = [ gpkgs.default ]; } ];
 
             extraSpecialArgs = {
               username = "jsimmons";
