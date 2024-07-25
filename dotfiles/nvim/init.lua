@@ -735,8 +735,17 @@ local plugins = {
 		} },
 	},
 	{ "m4xshen/autoclose.nvim" },
+	{
+		"APZelos/blamer.nvim",
+		keys = {
+			{
+				"<leader>b",
+				":BlamerToggle<CR>",
+				desc = "Git [B]lame",
+			},
+		},
+	},
 }
-
 local home = os.getenv("HOME")
 local workconfig_path = home .. "/.config/nvim/workconfig.lua"
 
