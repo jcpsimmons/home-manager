@@ -55,7 +55,8 @@
     vscode-langservers-extracted
     emmet-language-server
     tailwindcss-language-server
-    kubectl
+    nodePackages.pnpm
+    nodejs_22
 
     # Networking
     lsof

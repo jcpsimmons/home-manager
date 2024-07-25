@@ -734,6 +734,7 @@ local plugins = {
 			},
 		} },
 	},
+	{ "m4xshen/autoclose.nvim" },
 }
 
 local home = os.getenv("HOME")
