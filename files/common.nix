@@ -2,9 +2,8 @@
 
 {
   home.file = {
-    ".p10k.zsh".source = ../dotfiles/.p10k.zsh;
+    # ".p10k.zsh".source = ../dotfiles/.p10k.zsh;
     ".zshenv".text = ''
-      source ~/.p10k.zsh
       HISTSIZE=10000000
       SAVEHIST=10000000
       setopt HIST_EXPIRE_DUPS_FIRST

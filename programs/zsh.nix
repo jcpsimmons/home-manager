@@ -1,14 +1,12 @@
 { pkgs, outputName, homeDirectory, ... }:
 
 {
+  programs.starship.enable = true;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     initExtra = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
-
       export PATH=$HOME/go/bin:$PATH
 
       if [ -f $HOME/.workconfig ]; then

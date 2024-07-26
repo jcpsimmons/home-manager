@@ -28,8 +28,6 @@
       config.initial_cols = 120
       config.initial_rows = 40
 
-      config.window_decorations = "RESIZE"
-
       config.default_cursor_style = "BlinkingBlock"
       config.cursor_blink_rate = 200
       config.cursor_blink_ease_in = "Constant" 
