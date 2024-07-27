@@ -13,6 +13,7 @@
     # Shell
     neovim
     tmux
+    zellij
     zsh
     oh-my-zsh
     zsh-autocomplete
