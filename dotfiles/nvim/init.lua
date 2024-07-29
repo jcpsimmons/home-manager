@@ -635,51 +635,16 @@ local plugins = {
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		opts = function()
-			local opts = {
-				theme = "doom",
-				hide = {
-					statusline = true,
-				},
-				-- config = {
-				-- 	command = "sh",
-				-- 	file_path = "~/.scripts/coding-time-announce.sh",
-				-- 	file_width = 50,
-				-- 	file_height = 34,
-				--       -- stylua: ignore
-				--       center = {
-				--         { action = "Telescope oldfiles",desc = "",icon = " ", key = "r" },
-				--       },
-				-- 	footer = function()
-				-- 		return {
-				-- 			"",
-				-- 		}
-				-- 	end,
-				-- },
-			}
-
-			for _, button in ipairs(opts.config.center) do
-				button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-				button.key_format = "  %s"
-			end
-
-			-- close Lazy and re-open when the dashboard is ready
-			if vim.o.filetype == "lazy" then
-				vim.cmd.close()
-				vim.api.nvim_create_autocmd("User", {
-					pattern = "DashboardLoaded",
-					callback = function()
-						require("lazy").show()
-					end,
-				})
-			end
-
-			return opts
-		end,
-	},
+  {
+  'nvimdev/dashboard-nvim',
+  event = 'VimEnter',
+  config = function()
+    require('dashboard').setup {
+      -- config
+    }
+  end,
+  dependencies = { {'nvim-tree/nvim-web-devicons'}}
+},
 	{
 		"github/copilot.vim",
 	},
