@@ -635,16 +635,13 @@ local plugins = {
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
-  {
-  'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
-  config = function()
-    require('dashboard').setup {
-      -- config
-    }
-  end,
-  dependencies = { {'nvim-tree/nvim-web-devicons'}}
-},
+	{
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	},
 	{
 		"github/copilot.vim",
 	},
