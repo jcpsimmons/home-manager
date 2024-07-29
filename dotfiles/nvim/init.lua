@@ -644,21 +644,21 @@ local plugins = {
 				hide = {
 					statusline = true,
 				},
-				config = {
-					command = "sh",
-					file_path = "~/.scripts/coding-time-announce.sh",
-					file_width = 50,
-					file_height = 34,
-          -- stylua: ignore
-          center = {
-            { action = "Telescope oldfiles",desc = "",icon = " ", key = "r" },
-          },
-					footer = function()
-						return {
-							"",
-						}
-					end,
-				},
+				-- config = {
+				-- 	command = "sh",
+				-- 	file_path = "~/.scripts/coding-time-announce.sh",
+				-- 	file_width = 50,
+				-- 	file_height = 34,
+				--       -- stylua: ignore
+				--       center = {
+				--         { action = "Telescope oldfiles",desc = "",icon = " ", key = "r" },
+				--       },
+				-- 	footer = function()
+				-- 		return {
+				-- 			"",
+				-- 		}
+				-- 	end,
+				-- },
 			}
 
 			for _, button in ipairs(opts.config.center) do
