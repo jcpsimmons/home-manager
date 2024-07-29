@@ -13,17 +13,17 @@
           {key="LeftArrow", mods="OPT", action=wezterm.action{SendString="\x1bb"}},
           {key="RightArrow", mods="OPT", action=wezterm.action{SendString="\x1bf"}},
       }
-      config.color_scheme = 'Homebrew (Gogh)'
+      config.color_scheme = 'Everforest Dark (Gogh)'
 
-      config.font = wezterm.font 'BigBlueTermPlus Nerd Font'
-      config.font_size = 20
-      config.line_height = 1.07
+      config.font = wezterm.font 'JetBrainsMono Nerd Font'
+      config.font_size = 16
       config.text_background_opacity = 1.0
 
       config.hide_tab_bar_if_only_one_tab = true
 
-      config.window_background_opacity = 0.75
+      config.window_background_opacity = 0.95
       config.macos_window_background_blur = 12
+      config.window_decorations = "RESIZE"
 
       config.initial_cols = 120
       config.initial_rows = 40
