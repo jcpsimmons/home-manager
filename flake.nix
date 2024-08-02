@@ -10,16 +10,30 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { nixpkgs, home-manager, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      flake-utils,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
       {
 
         packages.homeConfigurations = {
           workMac = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
-            modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
+            modules = [
+              ./home.nix
+              ./packages/mac.nix
+              ./programs/mac.nix
+              ./files/mac.nix
+            ];
 
             extraSpecialArgs = {
               username = "jsimmons";
@@ -30,7 +44,12 @@
 
           personalMac = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ ./home.nix ./packages/mac.nix ./programs/mac.nix ./files/mac.nix ];
+            modules = [
+              ./home.nix
+              ./packages/mac.nix
+              ./programs/mac.nix
+              ./files/mac.nix
+            ];
 
             extraSpecialArgs = {
               username = "simsies";
@@ -41,7 +60,12 @@
 
           mediaServer = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ ./home.nix ./packages/linux.nix ./programs/rpi.nix ./files/linux.nix ];
+            modules = [
+              ./home.nix
+              ./packages/linux.nix
+              ./programs/rpi.nix
+              ./files/linux.nix
+            ];
 
             extraSpecialArgs = {
               username = "jsimmons";
@@ -52,7 +76,12 @@
 
           gpuBox = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+            modules = [
+              ./home.nix
+              ./packages/linux.nix
+              ./programs/linux.nix
+              ./files/linux.nix
+            ];
 
             extraSpecialArgs = {
               username = "jcpsimmons";
@@ -63,7 +92,12 @@
 
           gtak = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ ./home.nix ./packages/linux.nix ./programs/linux.nix ./files/linux.nix ];
+            modules = [
+              ./home.nix
+              ./packages/linux.nix
+              ./programs/linux.nix
+              ./files/linux.nix
+            ];
 
             extraSpecialArgs = {
               username = "jsimmons";

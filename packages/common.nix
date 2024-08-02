@@ -58,6 +58,9 @@
     tailwindcss-language-server
     nodePackages.pnpm
     nodejs_22
+    nixd
+    nixfmt-rfc-style
+    lua-language-server
 
     # Networking
     lsof
@@ -77,7 +80,12 @@
     ponysay
     gh
     typst
-    (nerdfonts.override { fonts = [ "BigBlueTerminal" "JetBrainsMono" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "BigBlueTerminal"
+        "JetBrainsMono"
+      ];
+    })
     dosbox-staging
     newsboat
   ];
