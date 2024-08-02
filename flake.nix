@@ -23,7 +23,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-
         packages.homeConfigurations = {
           workMac = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

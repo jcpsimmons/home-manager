@@ -313,7 +313,7 @@ local plugins = {
 
 			local servers = {
 				gopls = {},
-				tailwindcss = { cmd = "tailwindcss-language-server" },
+				tailwindcss = {},
 				-- temp disable to try typescript-tools only
 				-- tsserver = {},
 				emmet_language_server = {},
@@ -325,7 +325,7 @@ local plugins = {
 						})
 					end,
 				},
-				nixd = {},
+				nil_ls = {},
 				lua_ls = {
 					settings = {
 						Lua = {

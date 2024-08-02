@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [ ./common.nix ];
 
   home.file.".config/karabiner" = {

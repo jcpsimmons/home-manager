@@ -58,8 +58,6 @@
     tailwindcss-language-server
     nodePackages.pnpm
     nodejs_22
-    nixd
-    nixfmt-rfc-style
     lua-language-server
 
     # Networking
@@ -71,6 +69,7 @@
     nil
     nixd
     nixpkgs-fmt
+    nixfmt-rfc-style
 
     # Media
     spotify-player
