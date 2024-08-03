@@ -103,11 +103,19 @@ local plugins = {
 			local function goyo_enter()
 				require("lualine").hide()
 				vim.cmd("PencilSoft")
+
+				-- keeps line centered on jumps
+				vim.api.nvim_set_keymap("n", "j", "jzz", { noremap = true, silent = true })
+				vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, silent = true })
 			end
 
 			local function goyo_leave()
 				require("lualine").hide({ unhide = true })
 				vim.cmd("PencilOff")
+
+				-- remove jump centering
+				vim.api.nvim_del_keymap("n", "j")
+				vim.api.nvim_del_keymap("n", "n")
 			end
 
 			-- Create an augroup for Goyo mode
