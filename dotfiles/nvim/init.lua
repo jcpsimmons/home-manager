@@ -101,10 +101,12 @@ local plugins = {
 		config = function()
 			-- Define Lua functions for entering and leaving Goyo mode
 			local function goyo_enter()
+				require("lualine").hide()
 				vim.cmd("PencilSoft")
 			end
 
 			local function goyo_leave()
+				require("lualine").hide({ unhide = true })
 				vim.cmd("PencilOff")
 			end
 
