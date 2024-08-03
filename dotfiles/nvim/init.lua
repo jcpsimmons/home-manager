@@ -90,37 +90,44 @@ vim.opt.termguicolors = true
 local plugins = {
 	"tpope/vim-sleuth",
 	{
-		"folke/zen-mode.nvim",
+		"junegunn/goyo.vim",
+		dependencies = {
+			"preservim/vim-pencil",
+		},
+		cmd = "Goyo",
+		keys = {
+			{ "<leader>z", "<cmd>Goyo<CR>", desc = "[Z]en mode" },
+		},
 		config = function()
-			require("zen-mode").setup({
-				window = {
-					width = 80,
-					backdrop = 0.80,
-					options = {
-						number = false,
-						signcolumn = "no",
-						cursorline = false,
-						foldcolumn = "0",
-						list = false,
-					},
-				},
-				plugins = {
-					options = {
-						laststatus = 0,
-					},
-				},
-				on_open = function()
-					vim.opt.linebreak = true
-					vim.opt.relativenumber = false
-					-- vim.cmd.colorscheme("everforest")
-				end,
-				on_close = function()
-					vim.opt.linebreak = false
-					vim.opt.relativenumber = true
-					-- vim.cmd.colorscheme("murphy")
-				end,
+			-- Define Lua functions for entering and leaving Goyo mode
+			local function goyo_enter()
+				vim.cmd("PencilSoft")
+			end
+
+			local function goyo_leave()
+				vim.cmd("PencilOff")
+			end
+
+			-- Create an augroup for Goyo mode
+			local augroup_id = vim.api.nvim_create_augroup("Goyo", { clear = true })
+
+			-- Define autocommands for GoyoEnter and GoyoLeave
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "GoyoEnter",
+				callback = goyo_enter,
+				group = augroup_id,
+			})
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "GoyoLeave",
+				callback = goyo_leave,
+				group = augroup_id,
 			})
 		end,
+	},
+	{
+		"preservim/vim-pencil",
+		dependencies = { "godlygeek/tabular" },
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -374,15 +381,15 @@ local plugins = {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				nix = { "nixfmt" },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
-				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-				css = { "prettierd", "prettier", stop_after_first = true },
-				html = { "prettierd", "prettier", stop_after_first = true },
-				markdown = { "prettierd", "prettier", stop_after_first = true },
-				json = { "prettierd", "prettier", stop_after_first = true },
-				yaml = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				javascript = { "prettierd" },
+				javascriptreact = { "prettierd" },
+				css = { "prettierd" },
+				html = { "prettierd" },
+				markdown = { "prettierd" },
+				json = { "prettierd" },
+				yaml = { "prettierd" },
 			},
 		},
 	},
@@ -600,51 +607,37 @@ local plugins = {
 				wrap = "overflow",
 			}
 
-			-- DASHBOARD HEADER
-
-			local function getGreeting(name)
-				local tableTime = os.date("*t")
-				local datetime = os.date(" %Y-%m-%d-%A   %H:%M:%S ")
-				local hour = tableTime.hour
-				local greetingsTable = {
-					[1] = "  Sleep well",
-					[2] = "  Good morning",
-					[3] = "  Good afternoon",
-					[4] = "  Good evening",
-					[5] = "󰖔  Good night",
-				}
-				local greetingIndex = 0
-				if hour == 23 or hour < 7 then
-					greetingIndex = 1
-				elseif hour < 12 then
-					greetingIndex = 2
-				elseif hour >= 12 and hour < 18 then
-					greetingIndex = 3
-				elseif hour >= 18 and hour < 21 then
-					greetingIndex = 4
-				elseif hour >= 21 then
-					greetingIndex = 5
-				end
-				return datetime .. "  " .. greetingsTable[greetingIndex] .. ", " .. name
-			end
-
 			local logo = [[
-
-
-                                              
-       ████ ██████           █████      ██
-      ███████████             █████ 
-      █████████ ███████████████████ ███   ███████████
-     █████████  ███    █████████████ █████ ██████████████
-    █████████ ██████████ █████████ █████ █████ ████ █████
-  ███████████ ███    ███ █████████ █████ █████ ████ █████
- ██████  █████████████████████ ████ █████ █████ ████ ██████
-
+                                ...----....
+                         ..-:"''         ''"-..
+                      .-'                      '-.
+                    .'              .     .       '.
+                  .'   .          .    .      .    .''.
+                .'  .    .       .   .   .     .   . ..:.
+              .' .   . .  .       .   .   ..  .   . ....::.
+             ..   .   .      .  .    .     .  ..  . ....:IA.
+            .:  .   .    .    .  .  .    .. .  .. .. ....:IA.
+           .: .   .   ..   .    .     . . .. . ... ....:.:VHA.
+           '..  .  .. .   .       .  . .. . .. . .....:.::IHHB.
+          .:. .  . .  . .   .  .  . . . ...:.:... .......:HIHMM.
+         .:.... .   . ."::"'.. .   .  . .:.:.:II;,. .. ..:IHIMMA
+         ':.:..  ..::IHHHHHI::. . .  ...:.::::.,,,. . ....VIMMHM
+        .:::I. .AHHHHHHHHHHAI::. .:...,:IIHHHHHHMMMHHL:. . VMMMM
+       .:.:V.:IVHHHHHHHMHMHHH::..:" .:HIHHHHHHHHHHHHHMHHA. .VMMM.
+       :..V.:IVHHHHHMMHHHHHHHB... . .:VPHHMHHHMMHHHHHHHHHAI.:VMMI
+       ::V..:VIHHHHHHMMMHHHHHH. .   .I":IIMHHMMHHHHHHHHHHHAPI:WMM
+       ::". .:.HHHHHHHHMMHHHHHI.  . .:..I:MHMMHHHHHHHHHMHV:':H:WM
+       :: . :.::IIHHHHHHMMHHHHV  .ABA.:.:IMHMHMMMHMHHHHV:'. .IHWW
+       '.  ..:..:.:IHHHHHMMHV" .AVMHMA.:.'VHMMMMHHHHHV:' .  :IHWV
+        :.  .:...:".:.:TPP"   .AVMMHMMA.:. "VMMHHHP.:... .. :IVAI
+       .:.   '... .:"'   .   ..HMMMHMMMA::. ."VHHI:::....  .:IHW'
+       ...  .  . ..:IIPPIH: ..HMMMI.MMMV:I:.  .:ILLH:.. ...:I:IM
+     : .   .'"' .:.V". .. .  :HMMM:IMMMI::I. ..:HHIIPPHI::'.P:HM.
+     :.  .  .  .. ..:.. .    :AMMM IMMMM..:...:IV":T::I::.".:IHIMA
+     'V:.. .. . .. .  .  .   'VMMV..VMMV :....:V:.:..:....::IHHHMH
+       "IHH:.II:.. .:. .  . . . " :HB"" . . ..PI:.::.:::..:IHHMMV"
       ]]
 
-			local userName = "Lazy"
-			local greeting = getGreeting(userName)
-			local marginBottom = 0
 			dashboard.section.header.val = vim.split(logo, "\n")
 
 			-- Split logo into lines
@@ -652,26 +645,6 @@ local plugins = {
 			for line in logo:gmatch("[^\r\n]+") do
 				table.insert(logoLines, line)
 			end
-
-			-- Calculate padding for centering the greeting
-			local logoWidth = logo:find("\n") - 1 -- Assuming the logo width is the width of the first line
-			local greetingWidth = #greeting
-			local padding = math.floor((logoWidth - greetingWidth) / 2)
-
-			-- Generate spaces for padding
-			local paddedGreeting = string.rep(" ", padding) .. greeting
-
-			-- Add margin lines below the padded greeting
-			local margin = string.rep("\n", marginBottom)
-
-			-- Concatenate logo, padded greeting, and margin
-			local adjustedLogo = logo .. "\n" .. paddedGreeting .. margin
-
-			-- local function footer()
-			-- 	return "Footer Text"
-			-- end
-
-			-- dashboard.section.footer.val = vim.split('\n\n' .. getGreeting 'Lazy', '\n')
 
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "LazyVimStarted",
@@ -771,13 +744,12 @@ local file_exists = function(path)
 end
 
 if file_exists(workconfig_path) then
-	workconfig = dofile(workconfig_path)
-	if workconfig and workconfig.codeium_server_config then
-		workconfig.codeium_server_config()
+	WorkConfig = dofile(workconfig_path)
+	if WorkConfig and WorkConfig.codeium_server_config then
+		WorkConfig.codeium_server_config()
 	end
-	if workconfig and workconfig.plugin_config then
-		work_plugins = workconfig.plugin_config
-		for _, plugin in ipairs(workconfig.plugin_config) do
+	if WorkConfig and WorkConfig.plugin_config then
+		for _, plugin in ipairs(WorkConfig.plugin_config) do
 			table.insert(plugins, plugin)
 		end
 	end
