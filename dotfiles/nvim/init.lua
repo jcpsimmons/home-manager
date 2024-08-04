@@ -140,6 +140,9 @@ local plugins = {
 		keys = {
 			{ "<leader>tn", "<cmd>FloatermNew<CR>", desc = "[T]erminal [n]ew" },
 			{ "<leader>tt", "<cmd>FloatermToggle<CR>", desc = "[T]erminal [t]oggle" },
+			{ "<leader>tk", "<cmd>FloatermKill<CR>", desc = "[T]erminal [k]ill" },
+			{ "<leader>tl", "<cmd>FloatermNext<CR>", desc = "[T]erminal next" },
+			{ "<leader>th", "<cmd>FloatermPrev<CR>", desc = "[T]erminal previous" },
 		},
 	},
 	{
@@ -153,17 +156,14 @@ local plugins = {
 			require("which-key").setup()
 			require("which-key").add({
 				{ "<leader>t", group = "[T]erminal", icon = { icon = "", color = "yellow" } },
-				{ "<leader>z", group = "[Z]en" },
 				{ "<leader>g", group = "[G]it" },
 				{ "<leader>l", group = "[L]SP" },
-				{ "<leader>f", group = "[F]ormat" },
-				{ "<leader>c", group = "[C]omment" },
-				{ "<leader>p", group = "[P]lugins" },
+				{ "<leader>f", group = "[F]ormat", icon = { icon = "", color = "green" } },
+				{ "<leader>c", group = "[C]omment", icon = { icon = "󰆈", color = "blue" } },
 				{ "<leader>d", group = "[D]ocument", icon = { icon = "", color = "orange" } },
 				{ "<leader>r", group = "[R]ename" },
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>s", group = "[S]earch", icon = { icon = "", color = "red" } },
+				{ "<leader>w", group = "[W]orkspace", icon = { icon = "󰇃", color = "green" } },
 			})
 		end,
 		opts = {},
