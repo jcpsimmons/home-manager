@@ -93,29 +93,25 @@ local plugins = {
 		"junegunn/goyo.vim",
 		dependencies = {
 			"preservim/vim-pencil",
+			"arnamak/stay-centered.nvim",
 		},
 		cmd = "Goyo",
 		keys = {
-			{ "<leader>z", "<cmd>Goyo<CR>", desc = "[Z]en mode" },
+			{ "<leader>z", "<cmd>Goyo<CR>", desc = "[Z]en mode", icon = { icon = " " } },
 		},
 		config = function()
 			-- Define Lua functions for entering and leaving Goyo mode
 			local function goyo_enter()
 				require("lualine").hide()
+				vim.cmd("Pencil")
 				vim.cmd("PencilSoft")
-
-				-- keeps line centered on jumps
-				vim.api.nvim_set_keymap("n", "j", "jzz", { noremap = true, silent = true })
-				vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, silent = true })
+				require("stay-centered").toggle()
 			end
 
 			local function goyo_leave()
 				require("lualine").hide({ unhide = true })
 				vim.cmd("PencilOff")
-
-				-- remove jump centering
-				vim.api.nvim_del_keymap("n", "j")
-				vim.api.nvim_del_keymap("n", "n")
+				require("stay-centered").toggle()
 			end
 
 			-- Create an augroup for Goyo mode
@@ -140,12 +136,36 @@ local plugins = {
 		dependencies = { "godlygeek/tabular" },
 	},
 	{
+		"voldikss/vim-floaterm",
+		keys = {
+			{ "<leader>tn", "<cmd>FloatermNew<CR>", desc = "[T]erminal [n]ew" },
+			{ "<leader>tt", "<cmd>FloatermToggle<CR>", desc = "[T]erminal [t]oggle" },
+		},
+	},
+	{
 		"numToStr/Comment.nvim",
 		opts = {},
 	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
+		config = function()
+			require("which-key").setup()
+			require("which-key").add({
+				{ "<leader>t", group = "[T]erminal", icon = { icon = "", color = "yellow" } },
+				{ "<leader>z", group = "[Z]en" },
+				{ "<leader>g", group = "[G]it" },
+				{ "<leader>l", group = "[L]SP" },
+				{ "<leader>f", group = "[F]ormat" },
+				{ "<leader>c", group = "[C]omment" },
+				{ "<leader>p", group = "[P]lugins" },
+				{ "<leader>d", group = "[D]ocument", icon = { icon = "", color = "orange" } },
+				{ "<leader>r", group = "[R]ename" },
+				{ "<leader>s", group = "[S]earch" },
+				{ "<leader>w", group = "[W]orkspace" },
+				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+			})
+		end,
 		opts = {},
 		keys = {
 			{
@@ -305,11 +325,11 @@ local plugins = {
 						})
 					end
 
-					if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-						map("<leader>th", function()
-							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-						end, "[T]oggle Inlay [H]ints")
-					end
+					-- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+					-- 	map("<leader>th", function()
+					-- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+					-- 	end, "[T]oggle Inlay [H]ints")
+					-- end
 				end,
 			})
 
