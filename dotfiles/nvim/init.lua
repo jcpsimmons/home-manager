@@ -97,7 +97,7 @@ local plugins = {
 		},
 		cmd = "Goyo",
 		keys = {
-			{ "<leader>z", "<cmd>Goyo<CR>", desc = "[Z]en mode", icon = { icon = " " } },
+			{ "<leader>z", "<cmd>Goyo<CR>", desc = "[Z]en mode" },
 		},
 		config = function()
 			-- Define Lua functions for entering and leaving Goyo mode
