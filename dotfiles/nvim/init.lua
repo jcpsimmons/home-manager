@@ -151,9 +151,11 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
+		event = "VimEnter",
 		config = function()
-			require("which-key").setup()
-			require("which-key").add({
+			local wk = require("which-key")
+			wk.setup()
+			wk.add({
 				{ "<leader>t", group = "[T]erminal", icon = { icon = "", color = "yellow" } },
 				{ "<leader>g", group = "[G]it" },
 				{ "<leader>l", group = "[L]SP" },
@@ -165,16 +167,6 @@ local plugins = {
 				{ "<leader>w", group = "[W]orkspace", icon = { icon = "󰇃", color = "green" } },
 			})
 		end,
-		opts = {},
-		keys = {
-			{
-				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "Buffer Local Keymaps (which-key)",
-			},
-		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -625,16 +617,12 @@ local plugins = {
 		"goolord/alpha-nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
 		},
 		config = function()
 			local alpha = require("alpha")
 			local dashboard = require("alpha.themes.dashboard")
-
-			_Gopts = {
-				position = "center",
-				hl = "Type",
-				wrap = "overflow",
-			}
 
 			local logo = [[
                                 ...----....
@@ -675,21 +663,32 @@ local plugins = {
 				table.insert(logoLines, line)
 			end
 
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "LazyVimStarted",
-				desc = "Add Alpha dashboard footer",
-				once = true,
-				callback = function()
-					local stats = require("lazy").stats()
-					local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
-					dashboard.section.footer.val =
-						{ " ", " ", " ", " Loaded " .. stats.count .. " plugins  in " .. ms .. " ms " }
-					dashboard.section.header.opts.hl = "DashboardFooter"
-					pcall(vim.cmd.AlphaRedraw)
-				end,
-			})
+			local builtin = require("telescope.builtin")
+			dashboard.section.buttons.val = {
+				dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+				dashboard.button("r", " Search Recent Files", builtin.oldfiles),
+				dashboard.button("q", "󰅚  Quit", ":qa<CR>"),
+				{ type = "padding", val = 2 },
+			}
 
-			dashboard.opts.opts.noautocmd = true
+			-- Set footer
+			local footer = [[
+     
+      [...] begin every action with the following question:
+      "Who am I, that I choose to prefer my own will and desires to the will of God and His command?"
+      In addition, strictly follow the commandment of Christ to never judge anyone.
+      - St. Pitirm
+    ]]
+
+			dashboard.section.footer.val = footer
+			dashboard.section.footer.type = "text"
+			dashboard.section.footer.opts = {
+				position = "center",
+				hl = "Number",
+			}
+
+			-- Keymaps
+			vim.keymap.set("n", "<leader>a", ":Alpha<CR>", { desc = "Goto Greeter Screen" })
 			alpha.setup(dashboard.opts)
 		end,
 	},
@@ -708,7 +707,7 @@ local plugins = {
 		version = "*",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
 		cmd = "Neotree",
