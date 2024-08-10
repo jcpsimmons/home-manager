@@ -44,8 +44,6 @@
     ngrok
 
     # Lang Specific
-    stylua
-    gopls
     go
     bun
     deno
@@ -54,11 +52,8 @@
     python3
     nodePackages_latest.typescript-language-server
     vscode-langservers-extracted
-    emmet-language-server
-    tailwindcss-language-server
     nodePackages.pnpm
     nodejs_22
-    lua-language-server
 
     # Networking
     lsof

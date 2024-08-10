@@ -248,6 +248,9 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
+			{ "williamboman/mason.nvim", config = true },
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{
 				"j-hui/fidget.nvim",
 				opts = {},
@@ -256,6 +259,7 @@ local plugins = {
 				"folke/neodev.nvim",
 				opts = {},
 			},
+			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -327,23 +331,9 @@ local plugins = {
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-			local lspconfig = require("lspconfig")
-
-			local function setup_servers(servers)
-				for server_name, config in pairs(servers) do
-					if lspconfig[server_name] then
-						lspconfig[server_name].setup(config)
-					else
-						print("Server config for " .. server_name .. " not found in lspconfig")
-					end
-				end
-			end
-
 			local servers = {
 				gopls = {},
 				tailwindcss = {},
-				-- temp disable to try typescript-tools only
-				-- tsserver = {},
 				emmet_language_server = {},
 				eslint = {
 					on_attach = function(_, bufnr)
@@ -365,7 +355,22 @@ local plugins = {
 				},
 			}
 
-			setup_servers(servers)
+			require("mason").setup()
+
+			local ensure_installed = vim.tbl_keys(servers or {})
+			vim.list_extend(ensure_installed, {
+				"stylua",
+			})
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			require("mason-lspconfig").setup({
+				handlers = {
+					function(server_name)
+						local server = servers[server_name] or {}
+						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+						require("lspconfig")[server_name].setup(server)
+					end,
+				},
+			})
 		end,
 	},
 	{ -- Autoformat
