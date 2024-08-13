@@ -44,7 +44,6 @@
     ngrok
 
     # Lang Specific
-    go
     bun
     deno
     cargo
