@@ -67,7 +67,6 @@
 
     # Media
     spotify-player
-    yt-dlp
 
     # Misc
     ponysay
