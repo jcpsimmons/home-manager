@@ -332,8 +332,8 @@ local plugins = {
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
-				gopls = {},
 				biome = {},
+				-- gopls = {},
 				tailwindcss = {},
 				emmet_language_server = {},
 				eslint = {
@@ -549,7 +549,7 @@ local plugins = {
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			-- vim.cmd.colorscheme("murphy")
-			vim.cmd.colorscheme("everforest")
+			vim.cmd.colorscheme("murphy")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
