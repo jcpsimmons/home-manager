@@ -24,11 +24,15 @@
       Place your DOS games here.
     '';
 
-    ".config/nvim" = {
-      source = ../dotfiles/nvim;
-      recursive = true;
+    ".config/nvim/init.lua".source =
+      pkgs.fetchFromGitHub {
+        owner = "jcpsimmons";
+        repo = "neovim-config";
+        rev = "main";
+        sha256 = "0prr7ii6x8an1hfv9jsvx5ga2r8jlsw4xd4szns88gflwy1j3xm0";
+      }
+      + "/init.lua";
 
-    };
     ".scripts/coding-time-announce.sh" = {
       text = ''
         #!${pkgs.bash}/bin/bash
@@ -38,4 +42,3 @@
     };
   };
 }
-
