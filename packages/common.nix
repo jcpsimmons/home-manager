@@ -8,7 +8,6 @@
     cool-retro-term
     vscode
     obsidian
-    wezterm
 
     # Shell
     neovim
